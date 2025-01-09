@@ -24,6 +24,8 @@ alias cconsole='docker compose run --rm $(docker ps --format '{{.Names}}' | grep
 # alias pour entrer dans le container npm
 alias nnpm='docker compose exec $(docker ps --format '{{.Names}}' | grep apache) bash'
 
+#alias pour donner les droits sur le projet
+alias s777='sudo chmod -R 777 ./'
 
 # alias pour exporter un snap de la base de données
 alias db-export='sudo docker exec $(docker ps --format '{{.Names}}' | grep mariadb) /root/backup.sh'
