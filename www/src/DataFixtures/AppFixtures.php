@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Console;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -21,6 +22,9 @@ class AppFixtures extends Fixture
     {
         // Appel de la méthode pour générer des utilisateurs
         $this->loadUsers($manager);
+
+        // Appel de la méthode pour générer des consoles
+        $this->loadConsoles($manager);
 
         $manager->flush();
     }
@@ -49,7 +53,7 @@ class AppFixtures extends Fixture
         ];
 
         // Boucle sur le tableau pour créer les utilisateurs
-        foreach ($array_users as $value) {
+        foreach ($array_users as $key => $value) {
             $user = new User();
             $user->setEmail($value['email']);
             $user->setPassword($this->encoder->hashPassword($user, $value['password']));
@@ -58,6 +62,24 @@ class AppFixtures extends Fixture
 
             // Persister les données
             $manager->persist($user);
+        }
+    }
+
+    /**
+     * Méthode pour générer des consoles
+     * @param ObjectManager $manager
+     * @return void
+     */
+    public function loadConsoles(ObjectManager $manager): void
+    {
+        $array_consoles = ['PS4', 'PS5', '360', 'XBOX Séries', 'ONE4', 'SWITCH', 'PC'];
+
+        foreach ($array_consoles as $key => $value) {
+            $console = new Console();
+            $console->setLabel($value);
+            $manager->persist($console);
+            // Définir une référence pour chaque console pour pouvoir faire les relations
+            $this->addReference('console_' . $key + 1, $console);
         }
     }
 }
