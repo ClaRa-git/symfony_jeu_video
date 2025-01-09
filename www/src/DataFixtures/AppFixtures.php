@@ -2,7 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Age;
 use App\Entity\Console;
+use App\Entity\Note;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -25,6 +27,9 @@ class AppFixtures extends Fixture
 
         // Appel de la méthode pour générer des consoles
         $this->loadConsoles($manager);
+
+        // Appel de la méthode pour générer des âges
+        $this->loadAges($manager);
 
         $manager->flush();
     }
@@ -82,4 +87,42 @@ class AppFixtures extends Fixture
             $this->addReference('console_' . $key + 1, $console);
         }
     }
+
+    /**
+     * Méthode pour générer les âges
+     * @param ObjectManager $manager
+     * @return void
+     */
+    public function loadAges(ObjectManager $manager): void
+    {
+        $array_ages = ['3', '7', '12', '16', '18'];
+
+        foreach ($array_ages as $key => $value) {
+            $age = new Age();
+            $age->setLabel($value);
+            $age->setImagePath('pegi' . $value . '.png');
+            $manager->persist($age);
+            $this->addReference('age_' . $key + 1, $age);
+        }
+    }
+    // autre méthode pour les âges
+    // public function loadAges(ObjectManager $manager): void
+    // {
+    //     $array_ages = [
+    //         ['label' => '3', 'imagePath' => 'pegi3.png'],
+    //         ['label' => '7', 'imagePath' => 'pegi7.png'],
+    //         ['label' => '12', 'imagePath' => 'pegi12.png'],
+    //         ['label' => '16', 'imagePath' => 'pegi16.png'],
+    //         ['label' => '18', 'imagePath' => 'pegi18.png']
+    //     ];
+    //      
+    //     foreach ($array_ages as $key => $value) {
+    //         $age = new Age();
+    //         $age->setLabel($value['label']);
+    //         $age->setImagePath($value['imagePath']);
+    //         $manager->persist($age);
+    //         $this->addReference('age_' . $key + 1, $age);
+    //     }
+    // }
+
 }
