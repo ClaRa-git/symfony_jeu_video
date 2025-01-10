@@ -1,10 +1,22 @@
 {# Récupération de la base #}
 {% extends 'base.html.twig' %}
 
+{# On définit le titre de la page #}
 {% block title %}
-	{{title}}
+	{{title|default('Nos jeux')}}
 {% endblock %}
 
 {% block body %}
-	<h1 class="text-primary">{{title}}</h1>
+	<div class="container mt-5">
+		<header class="mt-4">
+			<h1 class="text-center mb-5 display-4">{{title|default('Nos jeux')}}</h1>
+		</header>
+
+		<div class="game-grid">
+			{% for game in games %}
+				{% include 'components/_game_card.html.twig' with {'game': game} %}
+			{% endfor %}
+		</div>
+	</div>
+
 {% endblock %}

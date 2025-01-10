@@ -18,8 +18,6 @@ class HomeController extends AbstractController
         // Récupération les datas de tous les jeux
         $games = $gameRepository->findAll();
 
-
-
         return $this->render('home/index.html.twig', [
             'title' => $title,
             'games' => $games
