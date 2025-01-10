@@ -10,7 +10,7 @@
 					{{(game.price/100)|number_format(2, ',', '.')}}€
 				{% endif %}
 			</p>
-			<a href="#" class="btn btn-detail">Voir détail</a>
+			<a href="{{path('app_detail', {'id': game.id})}}" class="btn btn-detail">Voir détail</a>
 		</div>
 	</div>
 </div>

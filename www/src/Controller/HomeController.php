@@ -9,6 +9,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
+    /**
+     * Méthode permettant d'afficher la page d'accueil avec la liste de tous les jeux
+     * @Route("/", name="app_home")
+     * @param GameRepository $gameRepository
+     * @return Response
+     */
     #[Route('/', name: 'app_home')]
     public function index(GameRepository $gameRepository): Response
     {
@@ -21,6 +27,27 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'title' => $title,
             'games' => $games
+        ]);
+    }
+
+    /** Méthode permettant d'afficher les détails d'un jeu avec toutes ses informations
+     * @Route("/detail/{id}", name="app_detail")
+     * @param GameRepository $gameRepository
+     * @param int $id
+     * @return Response  
+     */
+    #[Route('/detail/{id}', name: 'app_detail')]
+    public function detail(GameRepository $gameRepository, int $id): Response
+    {
+        // Titre de la page
+        $title = "Détails du jeu";
+
+        // Récupération des datas d'un jeu
+        $game = $gameRepository->getGameWithInfos($id);
+
+        return $this->render('home/detail.html.twig', [
+            'title' => $title,
+            'game' => $game
         ]);
     }
 }
