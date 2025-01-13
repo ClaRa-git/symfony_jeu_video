@@ -107,4 +107,26 @@ class GameRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Méthode qui retourne la liste des consoles avec le nombre de jeux associés
+     * @return array
+     */
+    public function getCountGameByConsole(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $qb = $entityManager->createQueryBuilder();
+
+        $query = $qb->select([
+            'c.id',
+            'c.label',
+            'COUNT(g.id) as total'
+        ])->from(Game::class, 'g')
+            ->join('g.consoles', 'c')
+            ->groupBy('c.id')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

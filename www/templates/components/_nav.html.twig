@@ -19,15 +19,10 @@
                 <li class='nav-item dropdown'>
                     <a href="#" class='nav-link dropdown-toggle' role='button' data-bs-toggle='dropdown' aria-expanded='false'>Par consoles</a>
                     <ul class='dropdown-menu'>
-                        <li>
-                            <a class='dropdown-item' href="#">console 1</a>
-                        </li>
-                        <li>
-                            <a class='dropdown-item' href="#">console 2</a>
-                        </li>
-                        <li>
-                            <a class='dropdown-item' href="#">console 3</a>
-                        </li>                        
+                        {# on récupère la fonction twig pour récupérer les consoles #}
+                        {% for nav in menu_items() %}
+                            <li><a class='dropdown-item' href="#">{{nav.label}} ({{nav.total}})</a></li>                            
+                        {% endfor %}                  
                     </ul>
                 </li>
             </ul>
