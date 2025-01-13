@@ -116,3 +116,22 @@ cconsole d:m:m
 ⚠️ **Attention** : Vérifiez votre .env avec les valeurs de vos variables d'environnement définies précédemment.
 
 ## ENJOY :)
+
+## SI LE PROJET N'A PAS ETE CONFIGURE
+
+Cours SYMFONY
+
+METHODO
+Après avoir lancé le docker, Faire :
+
+enlever le - dans le "docker-compose" (3 dans le dossier)
+
+- ccomposer install
+- ccomposer create-project symfony/skeleton:"7.3.x-dev" ./
+DANS nnpm :
+- ccomposer require symfony/webpack-encore-bundle
+- ccomposer require symfony/webpack-encore-bundle
+- nnpm (rentrer dans le container)
+- npm i bootstrap
+- npm i bootstrap
+- npm run watch
