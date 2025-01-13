@@ -10,6 +10,12 @@
 	<div class="container mt-5">
 		<header class="mt-4">
 			<h1 class="text-center mb-5 display-4">{{title|default('Nos jeux')}}</h1>
+			{% if games[0]['pegi'] is defined %}
+				<div class="d-flex justify-content-center" style="width:100%">
+					<img src="/images/pegi/{{games[0]['pegi']}}" alt="image pegi" style="height:100px; width:auto; object-fit:contain" class="mb-3">
+				</div>
+			{% endif %}
+			
 		</header>
 
 		<div class="game-grid">

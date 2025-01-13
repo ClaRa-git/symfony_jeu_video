@@ -54,4 +54,48 @@ class HomeController extends AbstractController
             'consoles' => $consoles
         ]);
     }
+
+    /**
+     * Méthode permettant d'afficher la liste des jeux par console
+     * @Route("/console/{id}", name="app_console")
+     * @param GameRepository $gameRepository
+     * @param int $id
+     * @return Response
+     */
+    #[Route('/console/{id}', name: 'app_console')]
+    public function gamesByConsole(GameRepository $gameRepository, int $id): Response
+    {
+        // Récupération des datas des jeux par console
+        $games = $gameRepository->getGamesByConsole($id);
+
+        // Récupération du nom de la console
+        $title = 'Tous les jeux : ' . $games[0]['label'];
+
+        return $this->render('home/index.html.twig', [
+            'title' => $title,
+            'games' => $games
+        ]);
+    }
+
+    /**
+     * Méthode permettant d'afficher la liste des jeux par âge
+     * @Route("/age/{id}", name="app_age")
+     * @param GameRepository $gameRepository
+     * @param int $id
+     * @return Response
+     */
+    #[Route('/age/{id}', name: 'app_age')]
+    public function gamesByAge(GameRepository $gameRepository, int $id): Response
+    {
+        // Récupération des datas des jeux par âge
+        $games = $gameRepository->getGamesByAge($id);
+
+        // Récupération du nom de l'âge
+        $title = 'Tous les jeux : ' . $games[0]['label'] . '+';
+
+        return $this->render('home/index.html.twig', [
+            'title' => $title,
+            'games' => $games
+        ]);
+    }
 }

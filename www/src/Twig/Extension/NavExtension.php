@@ -22,7 +22,8 @@ class NavExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('menu_items', [NavExtensionRuntime::class, 'menu_items']),
+            new TwigFunction('menu_items_console', [NavExtensionRuntime::class, 'menuItemsConsole']),
+            new TwigFunction('menu_items_age', [NavExtensionRuntime::class, 'menuItemsAge']),
         ];
     }
 }

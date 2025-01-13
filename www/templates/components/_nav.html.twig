@@ -20,8 +20,17 @@
                     <a href="#" class='nav-link dropdown-toggle' role='button' data-bs-toggle='dropdown' aria-expanded='false'>Par consoles</a>
                     <ul class='dropdown-menu'>
                         {# on récupère la fonction twig pour récupérer les consoles #}
-                        {% for nav in menu_items() %}
-                            <li><a class='dropdown-item' href="#">{{nav.label}} ({{nav.total}})</a></li>                            
+                        {% for nav in menu_items_console() %}
+                            <li><a class='dropdown-item' href="{{path('app_console',{'id':nav.id})}}">{{nav.label}} ({{nav.total}})</a></li>                            
+                        {% endfor %}                  
+                    </ul>
+                </li>
+                <li class='nav-item dropdown'>
+                    <a href="#" class='nav-link dropdown-toggle' role='button' data-bs-toggle='dropdown' aria-expanded='false'>Par âge</a>
+                    <ul class='dropdown-menu'>
+                        {# on récupère la fonction twig pour récupérer les âges #}
+                        {% for age in menu_items_age() %}
+                            <li><a class='dropdown-item' href="{{path('app_age',{'id':age.id})}}"><img src="{{asset('images/pegi/' ~ age.imagePath)}}" alt="logo du pegi" style="height:30px; width:auto; object-fit:contain" class="m-1">{{age.label}}+ ({{age.total}})</a></li>                            
                         {% endfor %}                  
                     </ul>
                 </li>

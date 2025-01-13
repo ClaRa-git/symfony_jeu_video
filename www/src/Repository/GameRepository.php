@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Console;
 use App\Entity\Game;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -125,6 +126,83 @@ class GameRepository extends ServiceEntityRepository
         ])->from(Game::class, 'g')
             ->join('g.consoles', 'c')
             ->groupBy('c.id')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * Méthode qui retourne la liste des jeux par console
+     * @param int $id
+     * @return array
+     */
+    public function getGamesByConsole(int $id): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $qb = $entityManager->createQueryBuilder();
+
+        $query = $qb->select([
+            'g.id',
+            'g.title',
+            'g.imagePath',
+            'g.price',
+            'c.label'
+        ])->from(Game::class, 'g')
+            ->join('g.consoles', 'c')
+            ->where('c.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+    /**
+     * Méthode qui retourne tous les âges avec le nombre de jeux associés
+     * @return array
+     */
+    public function getCountGameByAge(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $qb = $entityManager->createQueryBuilder();
+
+        $query = $qb->select([
+            'a.id',
+            'a.label',
+            'a.imagePath',
+            'COUNT(g.id) as total'
+        ])->from(Game::class, 'g')
+            ->join('g.age', 'a')
+            ->groupBy('a.id')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * Méthode qui retourne la liste des jeux par age
+     * @param int $id
+     * @return array
+     */
+    public function getGamesByAge(int $id): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $qb = $entityManager->createQueryBuilder();
+
+        $query = $qb->select([
+            'g.id',
+            'g.title',
+            'g.imagePath',
+            'g.price',
+            'a.label',
+            'a.imagePath as pegi'
+        ])->from(Game::class, 'g')
+            ->join('g.age', 'a')
+            ->where('a.id = :id')
+            ->setParameter('id', $id)
             ->getQuery();
 
         return $query->getResult();

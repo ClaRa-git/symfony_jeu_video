@@ -16,8 +16,13 @@ class NavExtensionRuntime implements RuntimeExtensionInterface
         $this->gameRepository = $gameRepository;
     }
 
-    public function menu_items()
+    public function menuItemsConsole()
     {
         return $this->gameRepository->getCountGameByConsole();
+    }
+
+    public function menuItemsAge()
+    {
+        return $this->gameRepository->getCountGameByAge();
     }
 }
