@@ -7,6 +7,7 @@ import './bootstrap.js';
  */
 import './styles/app.scss';
 import './styles/detail.scss';
+import './styles/navbar.scss';
 
 import { Tooltip, Toast, Popover } from 'bootstrap';
 import './bootstrap';

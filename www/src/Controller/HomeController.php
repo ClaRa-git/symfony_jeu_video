@@ -45,9 +45,13 @@ class HomeController extends AbstractController
         // Récupération des datas d'un jeu
         $game = $gameRepository->getGameWithInfos($id);
 
+        // Récupération des consoles du jeu
+        $consoles = $gameRepository->getConsolesByGame($id);
+
         return $this->render('home/detail.html.twig', [
             'title' => $title,
-            'game' => $game
+            'game' => $game,
+            'consoles' => $consoles
         ]);
     }
 }

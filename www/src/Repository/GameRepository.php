@@ -84,4 +84,27 @@ class GameRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    /**
+     * Méthode qui récupère les consoles liées à un jeu
+     * @param int $id
+     * @return array
+     */
+    public function getConsolesByGame(int $id): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $qb = $entityManager->createQueryBuilder();
+
+        $query = $qb->select([
+            'c.id',
+            'c.label'
+            ])->from(Game::class, 'g')
+            ->join('g.consoles', 'c')
+            ->where('g.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

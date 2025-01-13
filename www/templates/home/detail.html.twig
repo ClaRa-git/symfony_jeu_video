@@ -10,8 +10,11 @@
 		</div>
 		<div class="game-detail-content">
 			<h1 class="game-title">{{game.title}}</h1>
-			{# TODO: Prévoir l'affichage des consoles #}
-
+			<div class="game-consoles mb-3">
+				{% for console in consoles %}
+					<span class="console-badge">{{console.label}}</span>
+				{% endfor %}
+			</div>
 			<div class="game-info-detail mb-4">
 				<div class="info-item">
 					<span class="info-label">Date de sortie :
