@@ -207,4 +207,35 @@ class GameRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Méthode qui retourne la liste des jeux par filtre
+     * @param string $field
+     * @return array
+     */
+    public function getGamesByFilter(string $field): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        // $qb = $entityManager->createQueryBuilder();
+
+        // $query = $qb->select([
+        //     'g.id',
+        //     'g.title',
+        //     'g.imagePath',
+        //     'g.price'
+        // ])->from(Game::class, 'g')
+        //     ->join('g.note', 'n')
+        //     ->orderBy($field)
+        //     ->getQuery();
+
+        $query = $entityManager->createQuery('
+        SELECT g.id, g.title, g.imagePath, g.price
+        FROM App\Entity\Game g
+        JOIN g.note n
+        ORDER BY ' . $field
+    );
+
+        return $query->getResult();
+    }
 }

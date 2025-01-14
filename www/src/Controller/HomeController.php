@@ -98,4 +98,23 @@ class HomeController extends AbstractController
             'games' => $games
         ]);
     }
+
+    /**
+     * Méthode permettant d'afficher la liste des jeux par filtre
+     * @Route("/gems/filter/{field}", name="app_filter")
+     * @param GameRepository $gameRepository
+     * @param string $field
+     * @return Response
+     */
+    #[Route('/games/filter/{field}', name: 'app_filter')]
+    public function gamesByFilter(GameRepository $gameRepository, string $field): Response
+    {
+        // Récupération des datas des jeux par filtre
+        $games = $gameRepository->getGamesByFilter($field);
+
+        return $this->render('home/index.html.twig', [
+            'title' => 'Tous les jeux',
+            'games' => $games
+        ]);
+    }
 }

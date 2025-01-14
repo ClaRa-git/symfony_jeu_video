@@ -24,6 +24,7 @@ class NavExtension extends AbstractExtension
         return [
             new TwigFunction('menu_items_console', [NavExtensionRuntime::class, 'menuItemsConsole']),
             new TwigFunction('menu_items_age', [NavExtensionRuntime::class, 'menuItemsAge']),
+            new TwigFunction('filters_items', [NavExtensionRuntime::class, 'filtersItems']),
         ];
     }
 }
