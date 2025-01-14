@@ -142,8 +142,8 @@ class AppFixtures extends Fixture
         // Utilisation d'une boucle pour générer les notes
         for ($i = 1; $i < 15; $i++) {
             $note = new Note();
-            $note->setMediaNote($this->randomNote(1, 20));
-            $note->setUserNote($this->randomNote(1, 20));
+            $note->setMediaNote($this->randomNote(10, 20));
+            $note->setUserNote($this->randomNote(10, 20));
             $manager->persist($note);
             $this->addReference('note_' . $i, $note);
         }

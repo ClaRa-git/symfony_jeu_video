@@ -135,3 +135,9 @@ DANS nnpm :
 - npm i bootstrap
 - npm i bootstrap
 - npm run watch
+
+PPUR REMETTRE A ZERO LA BASE :
+- cconsole d:d:d --force
+- cconsole d:d:c
+- cconsole d:m:m
+- cconsole d:f:l

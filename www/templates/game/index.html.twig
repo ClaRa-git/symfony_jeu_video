@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard
+{% endblock %}
+
+{% block body %}
+
+	<div class="game-list-container">
+		<h1>Liste des jeux</h1>
+		<a href="#" class="add-game-btn">Ajouter un jeu</a>
+
+		<table class="game-table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titre</th>
+					<th>Description</th>
+					<th>Prix</th>
+					<th>Date de sortie</th>
+					<th>Image</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for game in games %}
+					<tr>
+						<td>{{game.id}}</td>
+						<td>{{game.title}}</td>
+						<td>{{game.description|slice(0,50) ~ '...'}}</td>
+						<td class="game-price">{{(game.price/100)|number_format}}</td>
+						<td>{{game.releaseDate|date('d/m/Y')}}</td>
+						<td>
+							<img src="{{asset('images/games/' ~ game.imagePath)}}" alt="{{game.title}}" class="game-image-admin">
+						</td>
+						<td>
+							<div class="game-actions">
+								<a href="{{path('app_game_show', {'id': game.id})}}" class="view-link">Voir</a>
+								<a href="#" class="edit-link">Editer</a>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="#" class="add-game-btn">Ajouter un jeu</a>
+	</div>
+
+{% endblock %}

@@ -1,13 +1,5 @@
 @import "reset";
 
-// Variables
-$primary-bg: #1a1f36;
-$text-light: #f0f0f0;
-$accent-color: #ff595a;
-$highlight-color: #ffd700;
-$text-muted: rgba(240, 240, 240, 0.6);
-$overlay-bg: rgba(26, 31, 54, 0.7);
-
 .game-list-container {
     background-color: $primary-bg;
     color: $text-light;
@@ -140,14 +132,6 @@ $overlay-bg: rgba(26, 31, 54, 0.7);
         }
     }
 }
-
-// Variables
-$primary-bg: #1a1f36;
-$text-light: #f0f0f0;
-$accent-color: #ff595a;
-$highlight-color: #ffd700;
-$text-muted: rgba(240, 240, 240, 0.6);
-$overlay-bg: rgba(26, 31, 54, 0.7);
 
 .game-form-container {
     max-width: 800px;

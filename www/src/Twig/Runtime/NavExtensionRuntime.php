@@ -39,4 +39,14 @@ class NavExtensionRuntime implements RuntimeExtensionInterface
             ['label' => 'Note média', 'filter' => 'n.mediaNote DESC', 'icon' => 'fa-sharp fa-solid fa-arrow-down'],
         ];
     }
+
+    public function numberFormat($number, $decimals = 2, $thousandsSep = ',', $decPoint = '.')
+    {
+        if ($number != 0) {
+            return number_format($number, $decimals, $thousandsSep, $decPoint) . '€';
+        } else {
+            return 'Gratuit';
+        }
+        
+    }
 }

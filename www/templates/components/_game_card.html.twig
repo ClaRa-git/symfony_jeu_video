@@ -4,11 +4,7 @@
 		<h2 class="game-title">{{game.title}}</h2>
 		<div class="game-info-container">
 			<p class="game-price">
-				{% if game.price == 0 %}
-					Gratuit
-				{% else %}
-					{{(game.price/100)|number_format(2, ',', '.')}}€
-				{% endif %}
+				{{(game.price/100)|number_format}}
 			</p>
 			<a href="{{path('app_detail', {'id': game.id})}}" class="btn btn-detail">Voir détail</a>
 		</div>

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{# On récupère le template du composant _detail_card.html.twig #}
+	{% include 'components/_detail_card.html.twig' with {'game':game, 'consoles':consoles} %}
+
+	<div class="action-buttons">
+		<div>
+			{# TODO: Prévoir la suppression d'un jeu #}
+		</div>
+
+		<div>
+			<a href="#" class="btn btn-edit">Editer</a>
+		</div>
+
+		<div>
+			<a href="{{path('app_admin')}}" class="btn btn-back">Retour à la liste</a>
+		</div>
+	</div>
+{% endblock %}

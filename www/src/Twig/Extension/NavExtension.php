@@ -15,7 +15,7 @@ class NavExtension extends AbstractExtension
             // If your filter generates SAFE HTML, you should add a third
             // parameter: ['is_safe' => ['html']]
             // Reference: https://twig.symfony.com/doc/3.x/advanced.html#automatic-escaping
-            new TwigFilter('filter_name', [NavExtensionRuntime::class, 'doSomething']),
+            new TwigFilter('number_format', [NavExtensionRuntime::class, 'numberFormat']),
         ];
     }
 
