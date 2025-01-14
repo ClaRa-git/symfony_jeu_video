@@ -7,12 +7,13 @@ use Twig\Extension\RuntimeExtensionInterface;
 
 class NavExtensionRuntime implements RuntimeExtensionInterface
 {
-    //on va déclarer une variable en private pour stocker l'instance de gameRepository
+    // On va déclarer une variable en private pour stocker l'instance de GameRepository
     private $gameRepository;
 
     public function __construct(GameRepository $gameRepository)
     {
-       $this->gameRepository = $gameRepository;
+        // On va instancier GameRepository
+        $this->gameRepository = $gameRepository;
     }
 
     public function menuItemsConsole()
@@ -32,10 +33,10 @@ class NavExtensionRuntime implements RuntimeExtensionInterface
             ['label' => 'Prix', 'filter' => 'g.price DESC', 'icon' => 'fa-sharp fa-solid fa-arrow-down'],
             ['label' => 'Date de sortie', 'filter' => 'g.releaseDate ASC', 'icon' => 'fa-sharp fa-solid fa-arrow-up'],
             ['label' => 'Date de sortie', 'filter' => 'g.releaseDate DESC', 'icon' => 'fa-sharp fa-solid fa-arrow-down'],
-            ['label' => 'Note presse', 'filter' => 'n.mediaNote ASC', 'icon' => 'fa-sharp fa-solid fa-arrow-up'],
-            ['label' => 'Note presse', 'filter' => 'n.mediaNote DESC', 'icon' => 'fa-sharp fa-solid fa-arrow-down'],
             ['label' => 'Note utilisateur', 'filter' => 'n.userNote ASC', 'icon' => 'fa-sharp fa-solid fa-arrow-up'],
             ['label' => 'Note utilisateur', 'filter' => 'n.userNote DESC', 'icon' => 'fa-sharp fa-solid fa-arrow-down'],
+            ['label' => 'Note média', 'filter' => 'n.mediaNote ASC', 'icon' => 'fa-sharp fa-solid fa-arrow-up'],
+            ['label' => 'Note média', 'filter' => 'n.mediaNote DESC', 'icon' => 'fa-sharp fa-solid fa-arrow-down'],
         ];
     }
 }
