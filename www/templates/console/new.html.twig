@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création de console{% endblock %}
+
+{% block body %}
+    <div class="game-form-container">
+        <h1>Créer une nouvelle console</h1>
+
+        {{ include('console/_form.html.twig') }}
+
+        <div class="action-buttons">
+            <a href="{{ path('app_console_index') }}" class="btn btn-back">
+                <i class="fas fa-arrow-left"></i>
+                Retour à la liste
+            </a>
+        </div>
+    </div>
+{% endblock %}

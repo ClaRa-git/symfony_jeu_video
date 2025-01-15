@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_console_delete', {'id': console.id}) }}" onsubmit="return confirm('Etes vous certain de vouloir supprimer cette console ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ console.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>

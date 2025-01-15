@@ -140,7 +140,7 @@ class AppFixtures extends Fixture
     public function loadNotes(ObjectManager $manager): void
     {
         // Utilisation d'une boucle pour générer les notes
-        for ($i = 1; $i < 15; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $note = new Note();
             $note->setMediaNote($this->randomNote(10, 20));
             $note->setUserNote($this->randomNote(10, 20));
@@ -305,6 +305,16 @@ class AppFixtures extends Fixture
                 'releaseDate' => new \DateTime('2017-03-03'),
                 'imagePath' => 'zelda.jpg',
                 'note' => 14,
+                'age' => 3,
+                'console' => [6],
+            ],
+            [
+                'title' => 'The Legend of Zelda : Tears of the Kingdom',
+                'description' => 'Repoussez les limites de l’aventure. Faites le grand saut : la suite de l’aventure en monde ouvert acclamée par la critique vous attend ! Après The Legend of Zelda : Breath of The Wild, plongez dans des terres d’Hyrule ravagées par les forces obscures dans The Legend of Zelda : Tears of the Kingdom. Incarnez le héros de la légende, Link, et décidez du chemin que vous voulez suivre à travers les immenses terres d\'Hyrule et les vastes cieux qui les surplombent. Créez votre propre aventure dans un monde où vous pouvez donner libre cours à votre imagination. Saurez-vous maîtriser la puissance des nouvelles capacités de Link pour lutter contre les forces maléfiques qui menacent le royaume ?',
+                'price' => 5999,
+                'releaseDate' => new \DateTime('2023-05-12'),
+                'imagePath' => 'zeldatotk-6787b27dac8cc.webp',
+                'note' => 15,
                 'age' => 3,
                 'console' => [6],
             ],
