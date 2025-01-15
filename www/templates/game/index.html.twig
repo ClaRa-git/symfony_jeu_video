@@ -7,7 +7,7 @@
 
 	<div class="game-list-container">
 		<h1>Liste des jeux</h1>
-		<a href="#" class="add-game-btn">Ajouter un jeu</a>
+		<a href="{{path('app_game_new')}}" class="add-game-btn">Ajouter un jeu</a>
 
 		<table class="game-table">
 			<thead>
@@ -35,14 +35,14 @@
 						<td>
 							<div class="game-actions">
 								<a href="{{path('app_game_show', {'id': game.id})}}" class="view-link">Voir</a>
-								<a href="#" class="edit-link">Editer</a>
+								<a href="{{path('app_game_edit', {'id': game.id})}}" class="edit-link">Editer</a>
 							</div>
 						</td>
 					</tr>
 				{% endfor %}
 			</tbody>
 		</table>
-		<a href="#" class="add-game-btn">Ajouter un jeu</a>
+		<a href="{{path('app_game_new')}}" class="add-game-btn">Ajouter un jeu</a>
 	</div>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 {{form_start(form, {'attr': {'class': 'game-form'}})}}
-{{form_error(form)}}
+{{form_errors(form)}}
 
 <div class="form-group">
     {{form_label(form.title)}}
@@ -14,9 +14,21 @@
 </div>
 
 <div class="form-group">
+    {{form_label(form.price)}}
+    {{form_widget(form.price)}}
+    {{form_errors(form.price)}}
+</div>
+
+<div class="form-group">
     {{form_label(form.releaseDate)}}
     {{form_widget(form.releaseDate)}}
     {{form_errors(form.releaseDate)}}
+</div>
+
+<div class="form-group">
+    {{form_label(form.image)}}
+    {{form_widget(form.image)}}
+    {{form_errors(form.image)}}
 </div>
 
 <div class="form-group">
@@ -30,8 +42,8 @@
     <div class="console-switches">
         {% for console in form.consoles %}
             <div class="form-switch">
-                {{form_widget(console), {'attr': {'class': 'form-check-input'}}}}
-                {{form_label(console, null, {'label_attr': {'class': 'form-check-label'}})}}
+                {{form_widget(console, {'attr': {'class': 'form-check-input'}})}}
+                {{form_label(console, null, {'attr': {'class': 'form-check-label'}})}}
             </div>            
         {% endfor %}
     </div>
@@ -43,7 +55,9 @@
     {{form_errors(form.note)}}
 </div>
 
-{# Bouton de validation #}
-<div class="form-group">
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
-</div>
+<button type="submit" class="btn-submit">
+    <i class="fas fa-save"></i>
+    {{button_label|default('Enregistrer')}}
+</button>
+
+{{form_end(form)}}

@@ -130,10 +130,8 @@ enlever le - dans le "docker-compose" (3 dans le dossier)
 - ccomposer create-project symfony/skeleton:"7.3.x-dev" ./
 DANS nnpm :
 - ccomposer require symfony/webpack-encore-bundle
-- ccomposer require symfony/webpack-encore-bundle
 - nnpm (rentrer dans le container)
-- npm i bootstrap
-- npm i bootstrap
+- npm i
 - npm run watch
 
 PPUR REMETTRE A ZERO LA BASE :

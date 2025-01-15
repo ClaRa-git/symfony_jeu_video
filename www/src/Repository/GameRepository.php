@@ -238,4 +238,38 @@ class GameRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Méthode pour supprimer un jeu
+     * @param Game $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function delete(Game $entity, bool $flush = false): void
+    {
+        $entityManager = $this->getEntityManager();
+
+        $entityManager->remove($entity);
+
+        if ($flush) {
+            $entityManager->flush();
+        }
+    }
+
+    /**
+     * Méthode pour créer un jeu
+     * @param Game $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function save(Game $entity, bool $flush = false): void
+    {
+        $entityManager = $this->getEntityManager();
+
+        $entityManager->persist($entity);
+
+        if ($flush) {
+            $entityManager->flush();
+        }
+    }
 }

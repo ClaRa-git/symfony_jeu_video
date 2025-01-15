@@ -160,6 +160,8 @@
 }
 
 .game-form {
+    min-width: 450px;
+
     .form-group {
         margin-bottom: 1.5rem;
 
@@ -195,7 +197,7 @@
 
         .console-switches {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 0.5rem;
 
             .form-switch {
