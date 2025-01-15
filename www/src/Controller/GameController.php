@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 #[Route('/admin/game')]
 class GameController extends AbstractController
 {
-    #[Route('/dashboard', name: 'app_admin')]
+    #[Route(name: 'app_game_index')]
     public function index(GameRepository $gameRepository): Response
     {
         // On récupère tous les jeux
@@ -65,13 +65,12 @@ class GameController extends AbstractController
     public function gameDelete(GameRepository $gameRepository, Game $game, Request $request): Response
     {
         // On vérifie si le token est valide
-        if ($this->isCsrfTokenValid('delete' . $game->getId(), $request->request->get('_token'))) 
-        {
+        if ($this->isCsrfTokenValid('delete' . $game->getId(), $request->request->get('_token'))) {
             // On supprime le jeu
             $gameRepository->delete($game, true);
         }
 
-        return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_game_index', [], Response::HTTP_SEE_OTHER);
     }
 
     /**
@@ -90,25 +89,20 @@ class GameController extends AbstractController
         $form->handleRequest($request);
 
         // Partie gestion du formulaire
-        if ($form->isSubmitted() && $form->isValid()) 
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             // Gestion de l'image uploadée
             $imageFile = $form->get('image')->getData();
-            if ($imageFile)
-            {
+            if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // On génère un nom de fichier unique
                 $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
                 // On déplace le fichier dans le dossier public/images
-                try 
-                {
+                try {
                     $imageFile->move(
                         $this->getParameter('game_images_directory'),
                         $newFilename
                     );
-                } 
-                catch (FileException $e) 
-                {
+                } catch (FileException $e) {
                     $this->addFlash('danger', 'Une erreur est survenue lors de l\'upload de l\'image');
                 }
 
@@ -132,7 +126,7 @@ class GameController extends AbstractController
             // On enregistre le jeu dans la BDD
             $gameRepository->save($game, true);
 
-            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_game_index', [], Response::HTTP_SEE_OTHER);
         }
 
         // Partie où on rend la vue du formulaire
@@ -157,25 +151,20 @@ class GameController extends AbstractController
         $form->handleRequest($request);
 
         // Partie gestion du formulaire
-        if ($form->isSubmitted() && $form->isValid()) 
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             // Gestion de l'image uploadée
             $imageFile = $form->get('image')->getData();
-            if ($imageFile)
-            {
+            if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // On génère un nom de fichier unique
                 $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
                 // On déplace le fichier dans le dossier public/images
-                try 
-                {
+                try {
                     $imageFile->move(
                         $this->getParameter('game_images_directory'),
                         $newFilename
                     );
-                } 
-                catch (FileException $e) 
-                {
+                } catch (FileException $e) {
                     $this->addFlash('danger', 'Une erreur est survenue lors de l\'upload de l\'image');
                 }
 
@@ -186,13 +175,13 @@ class GameController extends AbstractController
             // On enregistre le jeu dans la BDD
             $gameRepository->save($game, true);
 
-            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_game_index', [], Response::HTTP_SEE_OTHER);
         }
 
         // Partie où on rend la vue du formulaire
         return $this->render('game/edit.html.twig', [
             'game' => $game,
             'form' => $form
-        ]);        
+        ]);
     }
 }

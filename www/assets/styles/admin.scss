@@ -302,7 +302,19 @@
                 background-color: darken($highlight-color, 10%);
                 box-shadow: 0 2px 4px rgba($highlight-color, 0.4);
             }
+
+            
         }
+        
+        &-dashboard {
+                background-color: $dashboard-color;
+                color: $text-light;
+
+                &:hover {
+                    background-color: darken($dashboard-color, 10%);
+                    box-shadow: 0 2px 4px rgba($dashboard-color, 0.4);
+                }
+            }
 
         &-back {
             background-color: $text-light;

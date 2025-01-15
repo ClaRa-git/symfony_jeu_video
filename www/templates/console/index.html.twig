@@ -6,6 +6,8 @@
 
     <div class="game-list-container">
 
+        {% include "components/_dashboard_button.html.twig" %}
+
         <h1>Liste des consoles</h1>
         <a href="{{ path('app_console_new') }}" class="add-game-btn">Ajouter une console</a>
 
@@ -38,5 +40,7 @@
         </table>
         <a href="{{ path('app_console_new') }}" class="add-game-btn">Ajouter une consoles</a>
     </div>
+
+    {% include "components/_dashboard_button.html.twig" %}
     
 {% endblock %}

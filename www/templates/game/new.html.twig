@@ -1,6 +1,7 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Création de jeu{% endblock %}
+{% block title %}Création de jeu
+{% endblock %}
 
 {% block body %}
 	<div class="game-form-container">
@@ -9,7 +10,7 @@
 		{% include "game/_form.html.twig" %}
 
 		<div class="action-buttons">
-			<a href="{{path('app_admin')}}" class="btn btn-back">
+			<a href="{{path('app_game_index')}}" class="btn btn-back">
 				<i class="fas fa-arrow-left"></i>
 				Retour à la liste
 			</a>

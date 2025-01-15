@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <h1>Dashboard</h1>
+
+    <div class="action-buttons">
+        <a href="{{path('app_console_index')}}" class="btn btn-edit">Voir les consoles</a>
+        <a href="{{path('app_game_index')}}" class="btn btn-edit">Voir les jeux</a>
+    </div>
+{% endblock %}
