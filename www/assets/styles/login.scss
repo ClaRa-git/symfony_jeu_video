@@ -46,6 +46,17 @@ $input-bg: lighten($primary-bg, 10%);
                 outline: none;
             }
         }
+
+        .link-auth {
+            color: $highlight-color;
+            text-decoration: none;
+            font-weight: bold;
+            padding-top: 20px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .alert {

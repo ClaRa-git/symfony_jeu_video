@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class="login-form">
+	<div class="game-form">
 		<form method="post">
 			{% if error %}
 				<div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -32,9 +32,14 @@
 
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-			<button class="btn-login" type="submit">
-				Se connecter
-			</button>
+			<button type="submit" class="btn-submit">
+				<i class="fas fa-save"></i>
+				{{button_label|default('Se connecter')}}
+        	</button>
+
+			<div class="form-group">
+				<a href="{{ path('app_register') }}" class="link-auth">Vous n'avez pas de compte ? Inscrivez-vous</a>
+			</div>
 		</form>
 	</div>
 {% endblock %}
