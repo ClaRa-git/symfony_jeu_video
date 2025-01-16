@@ -13,11 +13,14 @@
         {{ form_errors(form.email) }}
     </div>
 
-    <div class="form-group">
-        {{ form_label(form.plainPassword) }}
-        {{ form_widget(form.plainPassword) }}
-        {{ form_errors(form.plainPassword) }}
-    </div>
+    {# Masquer le mot de passe sur la route edit #}
+    {% if app.request.attributes.get('_route') != 'app_user_edit' %}
+        <div class="form-group">
+            {{ form_label(form.plainPassword) }}
+            {{ form_widget(form.plainPassword) }}
+            {{ form_errors(form.plainPassword) }}
+        </div>
+    {% endif %}
 
     <div class="form-group">
         {{ form_label(form.roles) }}

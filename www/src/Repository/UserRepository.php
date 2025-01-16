@@ -49,11 +49,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             'u.email',
             'u.roles',
         ])
-            ->from(User::class, 'u')
-            ->where('u.roles LIKE :roles')
-            ->setParameter('roles', '%ROLE_ADMIN%')
-            ->getQuery();
-
+        ->from(User::class, 'u')
+        ->where('u.roles LIKE :roles')
+        ->setParameter('roles', '%ROLE_ADMIN%')
+        ->getQuery();
+        
         return $query->getResult();
     }
 
@@ -73,11 +73,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             'u.email',
             'u.roles',
         ])
-            ->from(User::class, 'u')
-            ->where('u.roles LIKE :roles')
-            ->setParameter('roles', '%ROLE_USER%')
-            ->getQuery();
-
+        ->from(User::class, 'u')
+        ->where('u.roles LIKE :roles')
+        ->setParameter('roles', '%ROLE_USER%')
+        ->getQuery();
+        
         return $query->getResult();
     }
 }

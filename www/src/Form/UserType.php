@@ -34,10 +34,26 @@ class UserType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de choisir un rôle',
+                    ]),
+                ],
                 'expanded' => true,
                 'multiple' => true,
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('username', TextType::class, [
+                'label' => 'Nom d\'utilisateur',
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Nom d\'utilisateur',
+                ],
+            ])
+        ;
+
+        if(!$options['is_edit'])
+        {
+            $builder->add('plainPassword', PasswordType::class, [
                 'label' => 'Saisir votre mot de passe',
                 'mapped' => false,
                 'attr' => ['class' => 'form-control'],
@@ -52,21 +68,15 @@ class UserType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-            ->add('username', TextType::class, [
-                'label' => 'Nom d\'utilisateur',
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Nom d\'utilisateur',
-                ],
-            ])
-        ;
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'is_edit' => false,
         ]);
     }
 }
