@@ -47,6 +47,18 @@ class NavExtensionRuntime implements RuntimeExtensionInterface
         } else {
             return 'Gratuit';
         }
-        
+    }
+
+    public function badgeUser($roles)
+    {
+
+        switch ($roles[0]) {
+            case 'ROLE_ADMIN':
+                return  '<span class="badge text-bg-warning">Admin</span>';
+            case 'ROLE_USER':
+                return '<span class="badge text-bg-primary">Client</span>';
+            default:
+                return '<span class="badge text-bg-secondary">Inconnu</span>';
+        }
     }
 }

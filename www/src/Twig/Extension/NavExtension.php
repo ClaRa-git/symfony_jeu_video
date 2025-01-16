@@ -16,6 +16,7 @@ class NavExtension extends AbstractExtension
             // parameter: ['is_safe' => ['html']]
             // Reference: https://twig.symfony.com/doc/3.x/advanced.html#automatic-escaping
             new TwigFilter('number_format', [NavExtensionRuntime::class, 'numberFormat']),
+            new TwigFilter('badge_user', [NavExtensionRuntime::class, 'badgeUser'], ['is_safe' => ['html']]),
         ];
     }
 
